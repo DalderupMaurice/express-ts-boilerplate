@@ -1,0 +1,34 @@
+{
+  "name": "express-hlf-boilerplate-ts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Maurice Dalderup <dalderupmaurice@gmail.com> (https://mauricedalderup.be)",
+  "description": "An API built with NodeJS, Express, MongoDB and TypeScript using the HLF Node SDK",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "ts-node ./src/server.ts",
+    "start:prod": "nodemon ./dist/server.js",
+    "prod": "npm run build && npm run start:prod",
+    "lint": "tslint -c tslint.json -p tsconfig.json -t stylish"
+  },
+  "dependencies": {
+    "@types/express": "4.11.1",
+    "@types/helmet": "0.0.42",
+    "@types/mongoose": "5.3.7",
+    "body-parser": "1.18.2",
+    "dotenv": "6.2.0",
+    "express": "4.16.3",
+    "helmet": "3.15.0",
+    "mongoose": "5.0.14",
+    "nodemon": "1.17.3",
+    "typescript": "3.2.2"
+  },
+  "devDependencies": {
+    "ts-node": "7.0.1",
+    "tslint": "5.12.1",
+    "tslint-config-prettier": "1.17.0",
+    "tslint-eslint-rules": "5.4.0"
+  }
+}
