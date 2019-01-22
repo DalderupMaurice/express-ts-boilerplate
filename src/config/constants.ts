@@ -1,4 +1,4 @@
-import * as joi from "joi";
+import * as Joi from "joi";
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -14,10 +14,13 @@ const envVarsSchema = Joi.object({
     then: Joi.boolean().default(true),
     otherwise: Joi.boolean().default(false)
   }),
-  MONGO_URI: Joi.string()
+  HTTPS_ENABLED: Joi.boolean()
+    .required()
+    .description("Choose to use HTTPS or not"),
+  MONGO_URL_DEV: Joi.string()
     .required()
     .description("Mongo DB host url"),
-  MONGO_URI_PROD: Joi.string()
+  MONGO_URL_PROD: Joi.string()
     .required()
     .description("Mongo DB host url for production environment")
 })
@@ -36,11 +39,12 @@ if (error) {
 const config = {
   mongoUri:
     envVars.NODE_ENV === "production"
-      ? envVars.MONGO_URI_PROD
-      : envVars.MONGO_URI,
+      ? envVars.MONGO_URL_PROD
+      : envVars.MONGO_URL_DEV,
   env: envVars.NODE_ENV,
   port: envVars.PORT,
-  mongooseDebug: envVars.MONGOOSE_DEBUG
+  mongooseDebug: envVars.MONGOOSE_DEBUG,
+  https: envVars.HTTPS_ENABLED
 };
 
 export default config;

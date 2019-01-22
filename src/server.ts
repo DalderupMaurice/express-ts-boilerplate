@@ -1,13 +1,21 @@
 import * as fs from "fs";
 import * as https from "https";
-import app from "./app";
-const PORT = 3000;
+
+import app from "./config/app";
+import config from "./config/constants";
+import Logger from "./config/logger";
+
+const logger = Logger.getLoggerInstance("Server", "info");
 
 const httpsOptions = {
-  cert: fs.readFileSync("./config/certificates/cert.pem"),
-  key: fs.readFileSync("./config/certificates/key.pem")
+  cert: fs.readFileSync("./certificates/cert.pem"),
+  key: fs.readFileSync("./certificates/key.pem")
 };
 
-https.createServer(httpsOptions, app).listen(PORT, () => {
-  console.log("Express server listening on port " + PORT);
-});
+config.https
+  ? https.createServer(httpsOptions, app).listen(config.port, () => {
+      logger.info(`Server started over HTTPS on port ${config.port}`);
+    })
+  : app.listen(config.port, () => {
+      logger.info(`Server started on port ${config.port} (${config.env})`);
+    });
