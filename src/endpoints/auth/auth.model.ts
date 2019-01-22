@@ -1,5 +1,5 @@
 import * as httpStatus from "http-status";
-import { Document, Model, model, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 import { IUser, IUserModel } from "../../types/User";
 import APIError from "../../utils/APIError";
