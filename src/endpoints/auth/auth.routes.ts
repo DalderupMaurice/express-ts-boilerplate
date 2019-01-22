@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { check } from "express-validator/check";
 
 import validate from "../../middleware/validate";
+
 import AuthController from "./auth.controller";
-import { loginScheme } from "./auth.schemes";
+import { loginScheme, registerScheme } from "./auth.schemes";
 
 export default class Routes {
   public router: Router = Router();
@@ -16,12 +16,10 @@ export default class Routes {
       .route("/login")
       .post(loginScheme, validate, this.authCtrl.login);
 
-    // this.router
-    //   .route("/contact/:contactId")
-    //   // get specific contact
-    //   .get(this.contactController.addNewContact)
-    //   .put(this.contactController.addNewContact)
-    //   .delete(this.contactController.addNewContact);
+    /** POST /auth/register - Returns the registered user */
+    this.router
+      .route("/register")
+      .post(registerScheme, validate, this.authCtrl.register);
 
     return this.router;
   }

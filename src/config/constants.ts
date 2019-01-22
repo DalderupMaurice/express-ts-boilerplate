@@ -1,11 +1,13 @@
+import * as dotenv from "dotenv";
 import * as Joi from "joi";
 
-import * as dotenv from "dotenv";
 dotenv.config();
 
 // define validation for all the env vars
 const envVarsSchema = Joi.object({
   PORT: Joi.number().default(3000),
+  SALT_ROUNDS: Joi.number().default(10),
+  JWT_SECRET: Joi.string().required(),
   NODE_ENV: Joi.string()
     .allow(["development", "production", "test", "provision"])
     .default("development"),
@@ -44,7 +46,9 @@ const config = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   mongooseDebug: envVars.MONGOOSE_DEBUG,
-  https: envVars.HTTPS_ENABLED
+  https: envVars.HTTPS_ENABLED,
+  saltRounds: envVars.SALT_ROUNDS,
+  jwtSecret: envVars.JWT_SECRET
 };
 
 export default config;

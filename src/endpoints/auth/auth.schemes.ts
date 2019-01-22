@@ -5,30 +5,36 @@ export const loginScheme = checkSchema({
   username: {
     in: "body",
     exists: true,
-    errorMessage: "No username was given"
+    errorMessage: "username is required"
   },
   password: {
     in: "body",
     isLength: {
-      errorMessage: "Password should be at least 7 chars long",
-      // Multiple options would be expressed as an array
+      errorMessage: "Password should be at least 3 chars long",
       options: { min: 3 }
     }
   }
 });
 
 export const registerScheme = checkSchema({
-  username: {
-    in: "body",
-    errorMessage: "No username was given",
-    exists: true
-  },
+  username: { in: "body", exists: true, errorMessage: "username is required" },
   password: {
     in: "body",
+    exists: true,
     isLength: {
-      errorMessage: "Password should be at least 7 chars long",
-      // Multiple options would be expressed as an array
+      errorMessage: "password should be at least 3 chars long",
       options: { min: 3 }
     }
+  },
+  role: { in: "body", exists: true, errorMessage: "role is required" },
+  identification: {
+    in: "body",
+    exists: true,
+    errorMessage: "identification is required"
+  },
+  affiliation: {
+    in: "body",
+    exists: true,
+    errorMessage: "affiliation is required"
   }
 });

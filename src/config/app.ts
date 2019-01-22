@@ -1,15 +1,19 @@
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as expressValidator from "express-validator";
-import { validationResult } from "express-validator/check";
 import * as helmet from "helmet";
 import * as mongoose from "mongoose";
 import * as morgan from "morgan";
+
+import { apiErrorHandler, notFoundHandler } from "../middleware/error";
 import routes from "../server.routes";
+
+import config from "./constants";
+import Logger, { expressErrorLogger } from "./logger";
 
 class App {
   public app: express.Application;
-  public mongoUrl: string = "mongodb://localhost:27017/CRMdb";
+  public logger = Logger.getLoggerInstance("APP");
 
   constructor() {
     this.app = express();
@@ -35,16 +39,28 @@ class App {
     this.app.use(helmet());
   }
 
-  private postApiRouterMiddlewares(): void {}
+  private postApiRouterMiddlewares(): void {
+    // catch 404 and forward to error handler
+    this.app.use(notFoundHandler);
+
+    // Logging of errors (console + file)
+    this.app.use(expressErrorLogger);
+
+    // Handling errors and converting to APIError if needed
+    this.app.use(apiErrorHandler);
+  }
 
   private mongoSetup(): void {
     (mongoose as any).Promise = global.Promise;
     mongoose
       .connect(
-        this.mongoUrl,
-        { useNewUrlParser: true }
+        config.mongoUri,
+        { useNewUrlParser: true, useCreateIndex: true }
       )
-      .catch(e => console.error("No database connection", e));
+      .catch(e => {
+        this.logger.error("No database connection", e);
+        process.exit(1);
+      });
   }
 }
 

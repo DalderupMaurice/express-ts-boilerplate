@@ -5,7 +5,7 @@ import app from "./config/app";
 import config from "./config/constants";
 import Logger from "./config/logger";
 
-const logger = Logger.getLoggerInstance("Server", "info");
+const logger = Logger.getLoggerInstance("SERVER");
 
 const httpsOptions = {
   cert: fs.readFileSync("./certificates/cert.pem"),

@@ -3,6 +3,19 @@
   "rules": {
     "object-literal-sort-keys": false,
     "no-submodule-imports": false,
-    "interface-name": false
+    "interface-name": false,
+    "no-empty-interface": false,
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "lf"
+      }
+    ]
   }
 }

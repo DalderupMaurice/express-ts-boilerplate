@@ -1,7 +1,9 @@
+import * as expressWinston from "express-winston";
 import { createLogger, format, Logger, transports } from "winston";
+
 const { prettyPrint, colorize, combine, printf } = format;
 
-export default class Helpers {
+export default class CustomLogger {
   /**
    * Winston Logger with default level: debug
    *
@@ -9,12 +11,9 @@ export default class Helpers {
    * @param {string} label
    * @param {string} [level]
    * @returns {LoggerInstance}
-   * @memberof Helpers
+   * @memberof CustomLogger
    */
-  public static getLoggerInstance(
-    label: string = "FABRIC",
-    level: string = "debug"
-  ): Logger {
+  public static getLoggerInstance(label: string = "SERVER"): Logger {
     return createLogger({
       exitOnError: false,
       format: combine(
@@ -22,11 +21,29 @@ export default class Helpers {
         prettyPrint(),
         colorize(),
         printf(
-          ({ timestamp, message }) =>
-            `${level}: [${label} - ${timestamp}] - ${message} \n\n`
+          ({ level, timestamp, message }) =>
+            `\n${level}: [${label} - ${timestamp}] - ${message}`
         )
       ),
       transports: [new transports.Console()]
     });
   }
 }
+
+const defaultTransports = [
+  new transports.Console({
+    format: combine(
+      format.timestamp(),
+      prettyPrint(),
+      colorize(),
+      printf(
+        ({ level, meta: { error, message }, timestamp }) =>
+          `\n${level}: [${timestamp}] - ${error} - ${message}`
+      )
+    )
+  })
+];
+
+export const expressErrorLogger = expressWinston.errorLogger({
+  transports: defaultTransports
+});

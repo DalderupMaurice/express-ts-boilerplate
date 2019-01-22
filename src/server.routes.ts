@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import AuthRouter from "./endpoints/auth/auth.routes";
 
 export default class Routes {
