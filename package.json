@@ -38,7 +38,7 @@
     "lodash": "4.17.15",
     "mongoose": "5.7.1",
     "morgan": "1.9.1",
-    "nodemon": "1.19.3",
+    "nodemon": "1.19.4",
     "typescript": "3.2.4",
     "winston": "3.1.0"
   },
