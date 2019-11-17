@@ -21,7 +21,7 @@
     "@types/helmet": "0.0.42",
     "@types/joi": "14.3.0",
     "@types/jsonwebtoken": "8.3.5",
-    "@types/lodash": "4.14.140",
+    "@types/lodash": "4.14.148",
     "@types/mongoose": "5.5.31",
     "@types/morgan": "1.7.37",
     "bcrypt": "3.0.3",
