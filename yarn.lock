@@ -88,6 +88,11 @@
   resolved "https://registry.yarnpkg.com/@types/joi/-/joi-14.3.0.tgz#8a735b7cf5d7f0f9edea778e9594620df5e94aa9"
   integrity sha512-dkNE2Ibbe1eXqXAg8dmAXAjhuH/IUacNp7aG5ymdcIiktJIXZMCF+aEHvZAWjNQD+Cy9BYwkJla+19J/vmMAOg==
 
+"@types/joi@^14.3.3":
+  version "14.3.4"
+  resolved "https://registry.yarnpkg.com/@types/joi/-/joi-14.3.4.tgz#eed1e14cbb07716079c814138831a520a725a1e0"
+  integrity sha512-1TQNDJvIKlgYXGNIABfgFp9y0FziDpuGrd799Q5RcnsDu+krD+eeW/0Fs5PHARvWWFelOhIG2OPCo6KbadBM4A==
+
 "@types/jsonwebtoken@8.3.5":
   version "8.3.5"
   resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-8.3.5.tgz#ff9be1151a844095df1ff5f723651298c2c07659"
@@ -743,12 +748,13 @@ expect-ct@0.1.1:
   resolved "https://registry.yarnpkg.com/expect-ct/-/expect-ct-0.1.1.tgz#de84476a2dbcb85000d5903737e9bc8a5ba7b897"
   integrity sha512-ngXzTfoRGG7fYens3/RMb6yYoVLvLMfmsSllP/mZPxNHgFq41TmPSLF/nLY7fwoclI2vElvAmILFWGUYqdjfCg==
 
-express-validation@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/express-validation/-/express-validation-1.0.2.tgz#7d589dd3b257c55b3e004665b6c69cb12cc2b142"
-  integrity sha1-fVid07JXxVs+AEZltsacsSzCsUI=
+express-validation@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/express-validation/-/express-validation-1.0.3.tgz#677261e65f27f4e869c98dedc7934da6bbefaa8f"
+  integrity sha512-mtegbSCoplU5DpBLF3XpeudQD22Jv6Dmo4Tmxn2wxnWaMw4hmV1BjpkxCW2jXAV1q/2R70qKLauDEQzTN1uTGA==
   dependencies:
-    lodash "^4.9.0"
+    "@types/joi" "^14.3.3"
+    lodash "^4.17.15"
 
 express-validator@6.3.0:
   version "6.3.0"
@@ -1322,7 +1328,7 @@ lodash@4.17.15, lodash@^4.17.15:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
-lodash@^4.17.10, lodash@^4.9.0:
+lodash@^4.17.10:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
