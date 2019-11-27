@@ -50,12 +50,13 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express-winston@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/express-winston/-/express-winston-3.0.0.tgz#9bfe0ee65f69901fb240b4e374bbd811a2bd8366"
-  integrity sha512-YPMSMmS5WxQia8KbAuLgVZ1sUOrBUdG8bPEMYE4ZLAwKYTihd3+Fi5zrAp8lqO+ZX5b0/ZO5MBTLzp7oUASNUQ==
+"@types/express-winston@3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@types/express-winston/-/express-winston-3.0.4.tgz#0818399a094374f16c39bcba24ebcea3891791c6"
+  integrity sha512-fCvI4nTs/oYhq7jACnPurepOPMKz//bNuCwMIRCcESix9jEuky93H5KwkyKeEPGNZfQzR3zCUbeGWs6/jvV7Fg==
   dependencies:
     "@types/express" "*"
+    "@types/logform" "*"
     winston "^3.0.0"
 
 "@types/express@*":
@@ -99,6 +100,13 @@
   version "4.14.149"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
   integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
+
+"@types/logform@*":
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@types/logform/-/logform-1.10.1.tgz#d7abe0cc8bdc0931fd0072f6a90b7f91cdbb3f4f"
+  integrity sha512-7PFeU3gNsaG80dNWIl9FafSCnc4oYRXlyJ4yM38i0hMuqJaIMGSARS16QKTKfN4nZmNkA2Yy1z3h1WkJxgGbmA==
+  dependencies:
+    logform "*"
 
 "@types/mime@*":
   version "2.0.0"
@@ -758,10 +766,10 @@ express-validator@6.3.0:
     lodash "^4.17.15"
     validator "^11.1.0"
 
-express-winston@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/express-winston/-/express-winston-3.0.1.tgz#ea152584cee70a97640b24113aa149cd7afe3608"
-  integrity sha512-2nSHyJwlcgcjktzAFDayGy2lgTj4d9zVrBdnQnyTtMNrEVSPBc72ws3s/IQK0cgbgzG7TsyY9DIkWsiVAaBN8g==
+express-winston@3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/express-winston/-/express-winston-3.4.0.tgz#8131822e0c9cbaa28d9600b5e866bd8edec1628b"
+  integrity sha512-CKo4ESwIV4BpNIsGVNiq2GcAwuomL4dVJRIIH/2K/jMpoRI2DakhkVTtaJACzV7n2I1v+knDJkkjZRCymJ7nmA==
   dependencies:
     chalk "^2.4.1"
     lodash "^4.17.10"
@@ -1326,6 +1334,17 @@ lodash@^4.17.10, lodash@^4.9.0:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+
+logform@*:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/logform/-/logform-2.1.2.tgz#957155ebeb67a13164069825ce67ddb5bb2dd360"
+  integrity sha512-+lZh4OpERDBLqjiwDLpAWNQu6KMjnlXH2ByZwCuSqVPJletw0kTWJf5CgSNAUKn1KUkv3m2cUz/LK8zyEy7wzQ==
+  dependencies:
+    colors "^1.2.1"
+    fast-safe-stringify "^2.0.4"
+    fecha "^2.3.3"
+    ms "^2.1.1"
+    triple-beam "^1.3.0"
 
 logform@^1.9.1:
   version "1.10.0"
