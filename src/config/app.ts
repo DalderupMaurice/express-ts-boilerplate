@@ -1,7 +1,7 @@
-import * as express from "express";
-import * as helmet from "helmet";
-import * as mongoose from "mongoose";
-import * as morgan from "morgan";
+import express from "express";
+import helmet from "helmet";
+import mongoose from "mongoose";
+import morgan from "morgan";
 
 import { apiErrorHandler, notFoundHandler } from "../middleware/error";
 import routes from "../server.routes";

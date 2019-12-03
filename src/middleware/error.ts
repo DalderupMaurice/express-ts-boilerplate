@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import * as httpStatus from "http-status";
-import * as winston from "winston";
+import httpStatus from "http-status";
+import winston from "winston";
 
 import APIError from "../utils/APIError";
 

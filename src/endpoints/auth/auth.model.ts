@@ -1,4 +1,4 @@
-import * as httpStatus from "http-status";
+import httpStatus from "http-status";
 import { model, Schema } from "mongoose";
 
 import { IUser, IUserModel } from "../../types/User";

@@ -1,4 +1,4 @@
-import * as expressWinston from "express-winston"; // TODO not maintained anymore
+import expressWinston from "express-winston"; // TODO not maintained anymore
 import { createLogger, format, Logger, transports } from "winston";
 
 const { prettyPrint, colorize, combine, printf } = format;

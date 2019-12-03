@@ -1,7 +1,7 @@
-import * as bcrypt from "bcrypt";
+import bcrypt from "bcrypt";
 import { NextFunction, Request, Response } from "express";
-import * as httpStatus from "http-status";
-import * as jwt from "jsonwebtoken";
+import httpStatus from "http-status";
+import jwt from "jsonwebtoken";
 import { omit } from "lodash";
 
 import config from "../../config/constants";
