@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { validationResult } from "express-validator/check";
+import { validationResult } from "express-validator";
 import { UNPROCESSABLE_ENTITY } from "http-status";
 
 export interface Error {

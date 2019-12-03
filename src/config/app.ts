@@ -1,6 +1,4 @@
-import * as bodyParser from "body-parser";
 import * as express from "express";
-import * as expressValidator from "express-validator";
 import * as helmet from "helmet";
 import * as mongoose from "mongoose";
 import * as morgan from "morgan";
@@ -28,12 +26,8 @@ class App {
   private preApiRouterMiddlewares(): void {
     this.app.use(morgan("dev"));
 
-    // parse body params and attache them to req.body
-    this.app.use(bodyParser.json());
-    this.app.use(bodyParser.urlencoded({ extended: true }));
-
-    // Enable param validation middleware
-    this.app.use(expressValidator());
+    // parse body params to JSON and attach them to req.body
+    this.app.use(express.json());
 
     // secure apps by setting various HTTP headers
     this.app.use(helmet());
@@ -55,7 +49,7 @@ class App {
     mongoose
       .connect(
         config.mongoUri,
-        { useNewUrlParser: true, useCreateIndex: true }
+        { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
       )
       .catch(e => {
         this.logger.error("No database connection", e);

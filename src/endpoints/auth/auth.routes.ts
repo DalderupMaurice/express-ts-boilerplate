@@ -1,6 +1,7 @@
 import { Router } from "express";
 
-import validate from "../../middleware/validate";
+// TODO add validation middleware
+// import validate from "../../middleware/validate";
 
 import AuthController from "./auth.controller";
 import { loginScheme, registerScheme } from "./auth.schemes";
@@ -14,12 +15,12 @@ export default class Routes {
     /** POST /auth/login - Returns token if correct username and password is provided */
     this.router
       .route("/login")
-      .post(loginScheme, validate, this.authCtrl.login);
+      .post(loginScheme, this.authCtrl.login);
 
     /** POST /auth/register - Returns the registered user */
     this.router
       .route("/register")
-      .post(registerScheme, validate, this.authCtrl.register);
+      .post(registerScheme, this.authCtrl.register);
 
     return this.router;
   }
