@@ -8,7 +8,12 @@
     "sourceMap": true, // For easy debugging (shows true source code)
     "target": "es6", 
     "outDir": "dist",
-    "baseUrl": "./src"
+    "baseUrl": "./src", // Must be specified if paths is
+    "paths": { // TODO fix paths not working
+      "@config/*": ["./config/*"],
+      "@endpoints/*": ["endpoints/*"],
+      "@utils/*": ["utils/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

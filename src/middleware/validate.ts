@@ -19,7 +19,7 @@ export default function validateMiddleware(
     const errArray = validationResults.array();
     const errors =
       errArray.length > 1
-        ? errArray.map((e: Error) => e.msg)
+        ? errArray.map((e: any) => e.msg) // TODO fix any
         : [(errArray[0] as Error).msg];
     return res.status(UNPROCESSABLE_ENTITY).json({ errors });
   }
