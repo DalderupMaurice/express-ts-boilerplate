@@ -24,5 +24,5 @@ export default function validateMiddleware(
     return res.status(UNPROCESSABLE_ENTITY).json({ errors });
   }
 
-  next();
+  return next();
 }

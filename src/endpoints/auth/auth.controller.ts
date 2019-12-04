@@ -10,7 +10,7 @@ import APIError from "../../utils/APIError";
 import User from "./auth.model";
 
 export default class ContactController {
-  public async login(req: Request, res: Response, next: NextFunction) {
+  public static async login(req: Request, res: Response, next: NextFunction) {
     try {
       const { username, password } = req.body;
 
@@ -34,11 +34,15 @@ export default class ContactController {
         token
       });
     } catch (e) {
-      next(e);
+      return next(e);
     }
   }
 
-  public async register(req: Request, res: Response, next: NextFunction) {
+  public static async register(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
     try {
       const {
         username,

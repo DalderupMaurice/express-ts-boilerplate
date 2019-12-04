@@ -76,5 +76,4 @@ UserSchema.statics = {
   }
 };
 
-const User: UserModel = model<User, UserModel>("User", UserSchema);
-export default User;
+export default model<User, UserModel>("User", UserSchema);
