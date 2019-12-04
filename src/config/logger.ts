@@ -13,7 +13,7 @@ export default class CustomLogger {
    * @returns {LoggerInstance}
    * @memberof CustomLogger
    */
-  public static getLoggerInstance(label: string = "SERVER"): Logger {
+  public static getLoggerInstance(label = "SERVER"): Logger {
     return createLogger({
       exitOnError: false,
       format: combine(

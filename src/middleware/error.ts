@@ -12,12 +12,7 @@ winston.add(
   })
 );
 
-export function apiErrorHandler(
-  err: any,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function apiErrorHandler(err: any, req: Request, res: Response) {
   const error =
     err instanceof APIError
       ? err

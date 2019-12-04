@@ -47,10 +47,11 @@ class App {
   private mongoSetup(): void {
     (mongoose as any).Promise = global.Promise;
     mongoose
-      .connect(
-        config.mongoUri,
-        { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
-      )
+      .connect(config.mongoUri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+      })
       .catch(e => {
         this.logger.error("No database connection", e);
         process.exit(1);
