@@ -11,6 +11,7 @@ import Logger, { expressErrorLogger } from "./logger";
 
 class App {
   public app: express.Application;
+
   public logger = Logger.getLoggerInstance("APP");
 
   constructor() {

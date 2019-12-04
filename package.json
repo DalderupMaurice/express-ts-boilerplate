@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "start": "nodemon",
-    "start:dev": "ts-node ./src/server.ts",
+    "start:dev": "ts-node ./src/server.ts --log-error",
     "start:prod": "node ./dist/server.js",
     "lint": "eslint ./src --ext .ts,.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -6,14 +6,14 @@
     "esModuleInterop": true, // Allow easy imports (without *)
     "pretty": true, // Stylize errors and messages using color and context.
     "sourceMap": true, // For easy debugging (shows true source code)
-    "target": "es6", 
+    "target": "es6",
     "outDir": "dist",
-    "baseUrl": "./src", // Must be specified if paths is
-    "paths": { // TODO fix paths not working
-      "@config/*": ["./config/*"],
-      "@endpoints/*": ["endpoints/*"],
-      "@utils/*": ["utils/*"]
-    }
+    "baseUrl": "./src" // Must be specified if paths is
+    // "paths": { // TODO fix paths not working
+    //   "@config/*": ["./config/*"],
+    //   "@endpoints/*": ["endpoints/*"],
+    //   "@utils/*": ["utils/*"]
+    // }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

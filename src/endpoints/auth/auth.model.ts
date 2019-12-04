@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
 import { model, Schema } from "mongoose";
 
-import { IUser, IUserModel } from "../../types/User";
+import { User, UserModel } from "../../types/User";
 import APIError from "../../utils/APIError";
 
 const UserSchema: Schema = new Schema({
@@ -49,7 +49,7 @@ UserSchema.statics = {
   get(id: string) {
     return this.findById(id)
       .exec()
-      .then((user: IUser) => {
+      .then((user: User) => {
         if (user) {
           return user;
         }
@@ -66,7 +66,7 @@ UserSchema.statics = {
   getByUsername(username: string) {
     return this.findOne({ username })
       .exec()
-      .then((user: IUser) => {
+      .then((user: User) => {
         if (user) {
           return user;
         }
@@ -76,5 +76,5 @@ UserSchema.statics = {
   }
 };
 
-const User: IUserModel = model<IUser, IUserModel>("User", UserSchema);
+const User: UserModel = model<User, UserModel>("User", UserSchema);
 export default User;
