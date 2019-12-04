@@ -2,6 +2,7 @@ import express from "express";
 import helmet from "helmet";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import { createConnection } from "typeorm";
 
 import { apiErrorHandler, notFoundHandler } from "../middleware/error";
 import routes from "../server.routes";
@@ -21,7 +22,7 @@ class App {
     this.app.use("/", routes.getApiRouter());
     this.postApiRouterMiddlewares();
 
-    this.mongoSetup();
+    this.pgSetup();
   }
 
   private preApiRouterMiddlewares(): void {
@@ -53,10 +54,19 @@ class App {
         useUnifiedTopology: true,
         useCreateIndex: true
       })
+      .then(() =>
+        this.logger.info(`Connected to MongoDB on ${config.mongoUri}`)
+      )
       .catch(e => {
         this.logger.error("No database connection", e);
         process.exit(1);
       });
+  }
+
+  private pgSetup(): void {
+    createConnection()
+      .then(() => this.logger.info("Connected to Postgres"))
+      .catch(e => this.logger.error("No database connection. ", e));
   }
 }
 

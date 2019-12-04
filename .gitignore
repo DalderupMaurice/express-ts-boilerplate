@@ -3,3 +3,9 @@ dist
 yarn-error.log
 .env
 server
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/

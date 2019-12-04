@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "emitDecoratorMetadata": true, // Needed for TypeORM
+    "experimentalDecorators": true, // Needed for TypeORM
     "moduleResolution": "node",
     "noImplicitAny": true, // Strict TS rules
     "esModuleInterop": true, // Allow easy imports (without *)
