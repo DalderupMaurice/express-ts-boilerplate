@@ -2,15 +2,18 @@ import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
 import winston from "winston";
 
+import config from "../config/constants";
 import APIError from "../utils/APIError";
 
-winston.add(
-  new winston.transports.File({
-    filename: "server/logs/error.log",
-    level: "error",
-    handleExceptions: true
-  })
-);
+if (config.env === "PRODUCTION") {
+  winston.add(
+    new winston.transports.File({
+      filename: "logs/error.log",
+      level: "error",
+      handleExceptions: true
+    })
+  );
+}
 
 export function apiErrorHandler(err: any, req: Request, res: Response) {
   const error =
