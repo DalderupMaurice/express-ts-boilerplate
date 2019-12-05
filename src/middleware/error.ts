@@ -3,6 +3,7 @@ import httpStatus from "http-status";
 import winston from "winston";
 
 import config from "../config/constants";
+import { expressErrorLogger } from "../config/logger";
 import APIError from "../utils/APIError";
 
 if (config.env === "production") {
@@ -22,6 +23,7 @@ export function apiErrorHandler(err: any, req: Request, res: Response) {
       ? err
       : new APIError(err.message, httpStatus.BAD_REQUEST);
 
+  expressErrorLogger.error(error);
   winston.error(error.toString());
   res.status(error.httpStatusCode).json(error.toJSON());
 }

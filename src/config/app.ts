@@ -38,8 +38,8 @@ class App {
     // catch 404 and forward to error handler
     this.app.use(notFoundHandler);
 
-    // Logging of errors (console + file)
-    this.app.use(expressErrorLogger);
+    // // Logging of errors (console + file)
+    // this.app.use(expressErrorLogger); // TODO remove?
 
     // Handling errors and converting to APIError if needed
     this.app.use(apiErrorHandler);

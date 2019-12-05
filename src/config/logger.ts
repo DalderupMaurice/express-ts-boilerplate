@@ -30,20 +30,16 @@ export default class CustomLogger {
   }
 }
 
-const defaultTransports = [
-  new transports.Console({
-    format: combine(
-      format.timestamp(),
-      prettyPrint(),
-      colorize(),
-      printf(
-        ({ level, meta: { error, message }, timestamp }) =>
-          `\n${level}: [${timestamp}] - ${error} - ${message}`
-      )
+export const expressErrorLogger = createLogger({
+  exitOnError: false,
+  format: combine(
+    format.timestamp(),
+    prettyPrint(),
+    colorize(),
+    printf(
+      ({ level, meta: { error, message }, timestamp }) =>
+        `\n${level}: [${timestamp}] - ${error} - ${message}`
     )
-  })
-];
-
-export const expressErrorLogger = expressWinston.errorLogger({
-  transports: defaultTransports
+  ),
+  transports: [new transports.Console()] // TODO add file transport and/or replace in error.ts
 });
