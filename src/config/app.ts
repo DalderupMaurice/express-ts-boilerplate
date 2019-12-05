@@ -21,7 +21,7 @@ class App {
     this.app.use("/", routes.getApiRouter());
     this.postApiRouterMiddlewares();
 
-    this.mongoSetup();
+    this.dbSetup();
   }
 
   private preApiRouterMiddlewares(): void {
@@ -45,10 +45,10 @@ class App {
     this.app.use(apiErrorHandler);
   }
 
-  private mongoSetup(): void {
+  private dbSetup(): void {
     (mongoose as any).Promise = global.Promise;
     mongoose
-      .connect(config.mongoUri, {
+      .connect(config.dbUrl, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true

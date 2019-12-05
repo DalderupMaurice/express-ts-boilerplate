@@ -5,7 +5,7 @@ import winston from "winston";
 import config from "../config/constants";
 import APIError from "../utils/APIError";
 
-if (config.env === "PRODUCTION") {
+if (config.env === "production") {
   winston.add(
     new winston.transports.File({
       filename: "logs/error.log",
@@ -15,6 +15,7 @@ if (config.env === "PRODUCTION") {
   );
 }
 
+// TODO order res, req, next?
 export function apiErrorHandler(err: any, req: Request, res: Response) {
   const error =
     err instanceof APIError

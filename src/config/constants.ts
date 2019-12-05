@@ -11,7 +11,7 @@ const envVarsSchema = Joi.object({
   NODE_ENV: Joi.string()
     .allow(["development", "production", "test", "provision"])
     .default("development"),
-  MONGOOSE_DEBUG: Joi.boolean().when("NODE_ENV", {
+  DB_DEBUG: Joi.boolean().when("NODE_ENV", {
     is: Joi.string().equal("development"),
     then: Joi.boolean().default(true),
     otherwise: Joi.boolean().default(false)
@@ -19,12 +19,12 @@ const envVarsSchema = Joi.object({
   HTTPS_ENABLED: Joi.boolean()
     .required()
     .description("Choose to use HTTPS or not"),
-  MONGO_URL_DEV: Joi.string()
+  DB_URL_DEV: Joi.string()
     .required()
-    .description("Mongo DB host url"),
-  MONGO_URL_PROD: Joi.string()
+    .description("Missing DB host url"),
+  DB_URL_PROD: Joi.string()
     .required()
-    .description("Mongo DB host url for production environment")
+    .description("Missing DB host url for production environment")
 })
   .unknown()
   .required();
@@ -39,13 +39,13 @@ if (error) {
 }
 
 const config = {
-  mongoUri:
+  dbUrl:
     envVars.NODE_ENV === "production"
-      ? envVars.MONGO_URL_PROD
-      : envVars.MONGO_URL_DEV,
+      ? envVars.DB_URL_PROD
+      : envVars.DB_URL_DEV,
   env: envVars.NODE_ENV,
   port: envVars.PORT,
-  mongooseDebug: envVars.MONGOOSE_DEBUG,
+  dbDebug: envVars.DB_DEBUG,
   https: envVars.HTTPS_ENABLED,
   saltRounds: envVars.SALT_ROUNDS,
   jwtSecret: envVars.JWT_SECRET
