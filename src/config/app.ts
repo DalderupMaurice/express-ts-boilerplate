@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import { createConnection } from "typeorm";
 
+import Company from "../entity/Company";
+
 import { apiErrorHandler, notFoundHandler } from "../middleware/error";
 import routes from "../server.routes";
 
@@ -65,7 +67,13 @@ class App {
 
   private pgSetup(): void {
     createConnection()
-      .then(() => this.logger.info("Connected to Postgres"))
+      .then(async (connection: any) => {
+        console.log("Inserting a new user into the database...");
+        const companies = await connection.manager.find(Company);
+        console.log("Loaded companies: ", companies);
+
+        this.logger.info("Connected to Postgres");
+      })
       .catch(e => this.logger.error("No database connection. ", e));
   }
 }

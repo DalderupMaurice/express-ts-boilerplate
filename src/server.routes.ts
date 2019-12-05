@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import AuthRouter from "./endpoints/auth/auth.routes";
+import CompanyRouter from "./endpoints/company/company.routes";
 
 export default class Routes {
   public static getApiRouter(): Router {
@@ -13,6 +14,9 @@ export default class Routes {
 
     // Mounting /auth route
     router.use("/auth", new AuthRouter().routes());
+
+    // Mounting /auth route
+    router.use("/companies", new CompanyRouter().routes());
 
     return router;
   }
