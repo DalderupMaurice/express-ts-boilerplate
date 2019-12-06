@@ -1,8 +1,7 @@
-import httpStatus from "http-status";
 import { model, Schema } from "mongoose";
 
+import UserNotFoundError from "../../utils/UserNotFoundError";
 import { User, UserModel } from "../../types/User";
-import APIError from "../../utils/APIError";
 
 const UserSchema: Schema = new Schema({
   username: {
@@ -15,14 +14,6 @@ const UserSchema: Schema = new Schema({
     required: true
   },
   role: {
-    type: String,
-    required: true
-  },
-  identification: {
-    type: String,
-    required: true
-  },
-  affiliation: {
     type: String,
     required: true
   },
@@ -44,7 +35,7 @@ UserSchema.statics = {
   /**
    * Get user
    * @param {ObjectId} id - The objectId of user.
-   * @returns {Promise<User, APIError>}
+   * @returns {Promise<User, UserNotFoundError>}
    */
   get(id: string) {
     return this.findById(id)
@@ -53,7 +44,7 @@ UserSchema.statics = {
         if (user) {
           return user;
         }
-        const err = new APIError("No such user exists!", httpStatus.NOT_FOUND);
+        const err = new UserNotFoundError(`User with ID ${id} not found.`);
         return Promise.reject(err);
       });
   },
@@ -61,7 +52,7 @@ UserSchema.statics = {
   /**
    * Get user
    * @param {ObjectId} username - The username of user.
-   * @returns {Promise<User, APIError>}
+   * @returns {Promise<User, UserNotFoundError>}
    */
   getByUsername(username: string) {
     return this.findOne({ username })
@@ -70,7 +61,9 @@ UserSchema.statics = {
         if (user) {
           return user;
         }
-        const err = new APIError("No such user exists!", httpStatus.NOT_FOUND);
+        const err = new UserNotFoundError(
+          `User with name ${username} not found.`
+        );
         return Promise.reject(err);
       });
   }

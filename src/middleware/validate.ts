@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { validationResult } from "express-validator";
+import { validationResult, Result } from "express-validator";
 import { UNPROCESSABLE_ENTITY } from "http-status";
 
 export interface Error {
@@ -14,12 +14,12 @@ export default function validateMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  const validationResults = validationResult(req);
+  const validationResults: Result = validationResult(req);
   if (!validationResults.isEmpty()) {
     const errArray = validationResults.array();
     const errors =
       errArray.length > 1
-        ? errArray.map((e: any) => e.msg) // TODO fix any
+        ? errArray.map((e: Error) => e.msg)
         : [(errArray[0] as Error).msg];
     return res.status(UNPROCESSABLE_ENTITY).json({ errors });
   }

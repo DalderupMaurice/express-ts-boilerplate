@@ -9,7 +9,7 @@ import APIError from "../../utils/APIError";
 
 import User from "./auth.model";
 
-export default class ContactController {
+export default class AuthController {
   public static async login(req: Request, res: Response, next: NextFunction) {
     try {
       const { username, password } = req.body;
