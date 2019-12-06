@@ -1,51 +1,57 @@
-# Building RESTful Web APIs with Node.js, Express, MongoDB, TypeScript and Hyperledger Fabric
+<p align="center">
+  <h2 align="center">RESTful Web API with Node.js - Express - Typescript</h2>
+  <p align="center">
+  A simple boilerplate to bootstrap a Node.js express backend, utilizing Typescript and MongoDB
+  </p>
+  <p align="center">
+    <a href="https://github.com/DalderupMaurice/express-ts-boilerplate/blob/master/LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+    </a>
+    <a href="https://github.com/DalderupMaurice/express-ts-boilerplate">
+    	<img src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue.svg" alt="platforms" />
+    </a>
+    <a href="https://github.com/DalderupMaurice/express-ts-boilerplate">
+	    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="prs welcome">
+    </a>
+  </p>
+</p>
 
-This is a simple Express TypeScript API, levering the Hyperledger Node SDK
+## Features
 
-## Requirements
+- Written in **Typescript**
+- Middleware **Logging**
+- MongoDB
 
-[NodeJS](https://nodejs.org/en/)
+## Development
 
-Install global TypeScript and TypeScript Node
+Make sure you have a MongoDB database running locally or have a connection URL to a hosted MongoDB instance.
 
+```bash
+# Clone repo
+git clone <url>
+
+# Create .env file (and adjust values accordingly)
+cp .env.example .env
+
+# Install dependencies
+yarn
+
+# Start in development mode
+yarn start
+
+# Start in production mode
+yarn start:prod
 ```
-npm install -g typescript ts-node
-```
 
-## Getting Started
+The default URL is: _http://localhost:3000_ and _https://localhost:3000_ when HTTPS is enabled.
 
-You should install [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) on your local machine, or use other services such as [mLab](https://mlab.com/) or [Compose](https://www.compose.com/compare/mongodb)
+>The key and cert in the config folder is for testing purpose only. You should generate your own.
 
-After that, you will have to replace the mongoURL with your MongoDB address in _src/app.ts_
 
-## Clone this repository
+## Contributions
 
-```
-git clone <url> .
-```
+Feel free to submit pull requests, create issues, discuss ideas or spread the word.
 
-Then install the dependencies
+## License
 
-```
-npm install
-```
-
-## Start the server
-
-Run in development mode
-
-```
-npm run start
-```
-
-Run in production mode
-
-```
-npm run prod
-```
-
-The default URL is: _https://localhost:3000_
-
-The key and cert in the config folder is for testing purpose only. You should generate your own.
-
-_Reference from [Lynda.com](https://www.lynda.com/Node-js-tutorials/Next-steps/633869/671263-4.html)_
+MIT &copy; [Maurice Dalderup](https://twitter.com/mauricedalderup)
