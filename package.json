@@ -27,7 +27,6 @@
     "express": "4.17.1",
     "express-list-endpoints": "4.0.1",
     "express-validator": "6.3.0",
-    "express-winston": "4.0.1",
     "helmet": "3.21.2",
     "http-status": "1.4.2",
     "joi": "14.3.1",

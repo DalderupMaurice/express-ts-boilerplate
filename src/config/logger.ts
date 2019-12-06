@@ -1,5 +1,6 @@
-// import expressWinston from "express-winston"; // TODO not maintained anymore
 import { createLogger, format, Logger, transports } from "winston";
+
+import config from "./constants";
 
 const { prettyPrint, colorize, combine, printf } = format;
 
@@ -41,5 +42,15 @@ export const expressErrorLogger = createLogger({
         `\n${level}: [${name} - ${timestamp}] - ${statusCode} - ${message}\n`
     )
   ),
-  transports: [new transports.Console()] // TODO add file transport and/or replace in error.ts
+  transports:
+    config.env === "production"
+      ? [
+          new transports.Console(),
+          new transports.File({
+            filename: "logs/error.log",
+            level: "error",
+            handleExceptions: true
+          })
+        ]
+      : [new transports.Console()]
 });
