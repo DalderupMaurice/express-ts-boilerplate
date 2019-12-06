@@ -2,6 +2,7 @@ import express from "express";
 import helmet from "helmet";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import ele from "express-list-endpoints";
 
 import { apiErrorHandler, notFoundHandler } from "../middleware/error";
 import routes from "../server.routes";
@@ -43,6 +44,8 @@ class App {
 
     // Handling errors and converting to APIError if needed
     this.app.use(apiErrorHandler);
+
+    console.table(ele(this.app as express.Express));
   }
 
   private dbSetup(): void {
@@ -53,9 +56,10 @@ class App {
         useUnifiedTopology: true,
         useCreateIndex: true
       })
+      .then(() => this.logger.info(`Database connected: ${config.dbUrl} `))
       .catch(e => {
-        this.logger.error("No database connection", e);
-        process.exit(1);
+        this.logger.error(`No database connection: ${e}`);
+        this.dbSetup();
       });
   }
 }

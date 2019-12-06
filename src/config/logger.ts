@@ -1,4 +1,4 @@
-import expressWinston from "express-winston"; // TODO not maintained anymore
+// import expressWinston from "express-winston"; // TODO not maintained anymore
 import { createLogger, format, Logger, transports } from "winston";
 
 const { prettyPrint, colorize, combine, printf } = format;
@@ -22,7 +22,7 @@ export default class CustomLogger {
         colorize(),
         printf(
           ({ level, timestamp, message }) =>
-            `\n${level}: [${label} - ${timestamp}] - ${message}`
+            `${level}: [${label} - ${timestamp}] - ${message}`
         )
       ),
       transports: [new transports.Console()]
