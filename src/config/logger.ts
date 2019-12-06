@@ -37,8 +37,8 @@ export const expressErrorLogger = createLogger({
     prettyPrint(),
     colorize(),
     printf(
-      ({ level, meta: { error, message }, timestamp }) =>
-        `\n${level}: [${timestamp}] - ${error} - ${message}`
+      ({ level, name, statusCode, message, timestamp }) =>
+        `\n${level}: [${name} - ${timestamp}] - ${statusCode} - ${message}\n`
     )
   ),
   transports: [new transports.Console()] // TODO add file transport and/or replace in error.ts

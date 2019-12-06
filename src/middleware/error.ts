@@ -24,8 +24,8 @@ export function apiErrorHandler(err: any, req: Request, res: Response) {
       : new APIError(err.message, httpStatus.BAD_REQUEST);
 
   expressErrorLogger.error(error);
-  winston.error(error.toString());
-  res.status(error.httpStatusCode).json(error.toJSON());
+
+  return res.status(error.statusCode).json(error.toJSON());
 }
 
 export function notFoundHandler(
