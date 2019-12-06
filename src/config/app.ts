@@ -8,7 +8,7 @@ import { apiErrorHandler, notFoundHandler } from "../middleware/error";
 import routes from "../server.routes";
 
 import config from "./constants";
-import Logger, { expressErrorLogger } from "./logger";
+import Logger from "./logger";
 
 class App {
   public app: express.Application;
@@ -39,10 +39,7 @@ class App {
     // catch 404 and forward to error handler
     this.app.use(notFoundHandler);
 
-    // // Logging of errors (console + file)
-    // this.app.use(expressErrorLogger); // TODO remove?
-
-    // Handling errors and converting to APIError if needed
+    // Handling/logging errors and converting to APIError if needed
     this.app.use(apiErrorHandler);
 
     console.table(ele(this.app as express.Express));
