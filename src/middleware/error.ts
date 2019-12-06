@@ -16,8 +16,12 @@ if (config.env === "production") {
   );
 }
 
-// TODO order res, req, next?
-export function apiErrorHandler(err: any, req: Request, res: Response) {
+export function apiErrorHandler(
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const error =
     err instanceof APIError
       ? err
@@ -33,5 +37,5 @@ export function notFoundHandler(
   res: Response,
   next: NextFunction
 ) {
-  next(new APIError("API route not found", httpStatus.NOT_FOUND));
+  return next(new APIError("API route not found", httpStatus.NOT_FOUND));
 }
