@@ -37,5 +37,10 @@ export function notFoundHandler(
   res: Response,
   next: NextFunction
 ) {
-  return next(new APIError("API route not found", httpStatus.NOT_FOUND));
+  return next(
+    new APIError(
+      `${req.method} on route ${req.url} not found`,
+      httpStatus.NOT_FOUND
+    )
+  );
 }
