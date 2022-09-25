@@ -18,7 +18,7 @@
     "@types/express-list-endpoints": "4.0.1",
     "@types/helmet": "0.0.45",
     "@types/joi": "14.3.4",
-    "@types/jsonwebtoken": "8.3.5",
+    "@types/jsonwebtoken": "8.5.9",
     "@types/lodash": "4.14.149",
     "@types/mongoose": "5.5.34",
     "@types/morgan": "1.7.37",
