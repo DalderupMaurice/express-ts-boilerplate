@@ -24,7 +24,7 @@
     "@types/morgan": "1.7.37",
     "bcrypt": "3.0.7",
     "dotenv": "8.2.0",
-    "express": "4.17.1",
+    "express": "4.20.0",
     "express-list-endpoints": "4.0.1",
     "express-validator": "6.3.0",
     "helmet": "3.21.2",
